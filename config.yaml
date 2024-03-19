@@ -6,3 +6,8 @@ data_ingestion:
   source_URL: https://github.com/hrishikesh147/MLProject/raw/main/part_namesz.zip
   local_data_file: artifacts/data_ingestion/zipped_data.zip
   unzip_data: artifacts/data_ingestion/data
+
+data_validation:
+  root_dir: artifacts/data_validation
+  status_file: artifacts/data_validation/status.txt
+  unzip_data_dir: artifacts/data_ingestion/data/part_names.csv
