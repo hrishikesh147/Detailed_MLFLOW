@@ -7,7 +7,6 @@ URL="url link"
 REQUIREMENTS_FILE="requirements.txt"
 HYPHEN_E_DOT="-e ."
 
-
 def get_requirements():
     with open(REQUIREMENTS_FILE) as f:
         f=f.readlines()
