@@ -1,6 +1,6 @@
 from src.Detailed_MLFLow_project.constants import *
 from src.Detailed_MLFLow_project.utils.common import read_yaml,create_directories
-from src.Detailed_MLFLow_project.entity.config_entity import DataIngestionConfig
+from src.Detailed_MLFLow_project.entity.config_entity import (DataIngestionConfig,DataValidationConfig)
 
 class Configuration_Manager:
     def __init__(self,config_f=CONFIG_FILE_PATH,schema_f=SCHEMA_FILE_PATH,params_f=PARAMS_FILE_PATH):
@@ -11,7 +11,6 @@ class Configuration_Manager:
         create_directories([self.config_read.artifacts_root])
 
     def data_ingestion_config(self) -> DataIngestionConfig:
-    
         config=self.config_read.data_ingestion
         create_directories([config.root_dir])
 
@@ -23,3 +22,19 @@ class Configuration_Manager:
 
         )
         return get_data_ingestion_config
+    
+
+    def data_validation_config(self) ->DataValidationConfig:
+        config=self.config_read.data_validation
+        schema=self.schema_read.COLUMNS
+
+        create_directories([config.root_dir])
+
+        get_data_validation_config=DataValidationConfig(
+            root_dir=config.root_dir,
+            status_file=config.status_file,
+            unzip_data_dir=config.unzip_data_dir,
+            all_schema=schema
+        )
+
+        return get_data_validation_config
