@@ -11,3 +11,7 @@ data_validation:
   root_dir: artifacts/data_validation
   status_file: artifacts/data_validation/status.txt
   unzip_data_dir: artifacts/data_ingestion/data/part_names.csv
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_transformation_input: artifacts/data_ingestion/data

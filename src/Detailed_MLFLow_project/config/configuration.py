@@ -1,6 +1,6 @@
 from src.Detailed_MLFLow_project.constants import *
 from src.Detailed_MLFLow_project.utils.common import read_yaml,create_directories
-from src.Detailed_MLFLow_project.entity.config_entity import (DataIngestionConfig,DataValidationConfig)
+from src.Detailed_MLFLow_project.entity.config_entity import (DataIngestionConfig,DataValidationConfig,Data_Transformation_Config)
 
 class Configuration_Manager:
     def __init__(self,config_f=CONFIG_FILE_PATH,schema_f=SCHEMA_FILE_PATH,params_f=PARAMS_FILE_PATH):
@@ -38,3 +38,16 @@ class Configuration_Manager:
         )
 
         return get_data_validation_config
+    
+    def data_transformed_configuration(self)->Data_Transformation_Config:
+        config=self.config_read.data_transformation
+
+        create_directories([config.root_dir])
+    
+        get_data_transformed_config=Data_Transformation_Config(
+            root_dir=config.root_dir,
+            data_transformation_input=config.data_transformation_input
+
+        )
+
+        return get_data_transformed_config
